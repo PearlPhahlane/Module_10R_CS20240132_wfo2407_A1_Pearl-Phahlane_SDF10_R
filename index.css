@@ -5,3 +5,13 @@ html, body {
     background-color: #EEF0F4;
 
 }
+
+input {
+    color: #432000;
+    background-color: #DCE1EB;
+}
+
+button {
+    color: #FDFDFD;
+    background-color: #AC485A;
+}
