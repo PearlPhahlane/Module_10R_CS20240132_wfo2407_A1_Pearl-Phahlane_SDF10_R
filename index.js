@@ -45,7 +45,7 @@ if (snapshot.exists()) {
 
     }
 } else {
-    shoppingListEl.innerHTML = "No items here... yet"
+    shoppingListEl.innerHTML = "No items here... yet";
 
 }
 
@@ -69,9 +69,9 @@ function appendItemToShoppingListEl(item) {
     newEl.textContent = itemValue;
 
     newEl.addEventListener("click", function() {
-        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
 
-        remove(exactLocationOfItemInDB)
+        remove(exactLocationOfItemInDB);
 
     })
 
