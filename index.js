@@ -30,7 +30,7 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
-
+    let itemsArray = object.values(snapshot.val())
 
 
 })
