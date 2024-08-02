@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getDatabase, ref, push, onValue } from
- "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"
+ "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 
 const firebaseConfig = {
@@ -8,59 +8,56 @@ const firebaseConfig = {
 }
 
 
-const app = initializeApp(firebaseConfig)
-const database = getDatabase(app)
-const shoppingListInDB = ref (database, "shoppingList")
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const shoppingListInDB = ref (database, "shoppingList");
 
 
-const inputFieldEl = document.getElementById("input-field")
-const addButtonEl = document.getElementById("add-button")
-const shoppingListEl = document.getElementById("shopping-list")
+const inputFieldEl = document.getElementById("input-field");
+const addButtonEl = document.getElementById("add-button");
+const shoppingListEl = document.getElementById("shopping-list");
 
 addButtonEl.addEventListener("click", function() {
-    let inputValue = inputFieldEl.value
+    let inputValue = inputFieldEl.value;
     
-    push(shoppingListInDB, inputValue)
+    push(shoppingListInDB, inputValue);
 
-    clearInputFieldEl()
+    clearInputFieldEl();
 
-    appendItemToShoppingListEl(inputValue)
+    appendItemToShoppingListEl(inputValue);
 
     
 })
 
 onValue(shoppingListInDB, function(snapshot) {
-    let itemsArray = Object.entries(snapshot.val())
-
-
-    clearShoppingListEL()
+    let itemsArray = Object.entries(snapshot.val());
+    clearShoppingListEL();
     
-
     for (let i = 0; i < itemsArray.length; i ++) {
-        let currentItem = itemsArray[i]
-        let currentItemId = currentItem[0]
-        let currentItemValue = currentItem[1]
+        let currentItem = itemsArray[i];
+        let currentItemId = currentItem[0];
+        let currentItemValue = currentItem[1];
        
-        appendItemToShoppingListEl(currentItem)
+        appendItemToShoppingListEl(currentItem);
     }
 
 })
 
 function clearShoppingListEL() {
-    shoppingListEl.innerHTML = ""
+    shoppingListEl.innerHTML = "";
 }
 
 function clearInputFieldEl() {
-    inputFieldEl.value = ""
+    inputFieldEl.value = "";
 }
 
 function appendItemToShoppingListEl(item) {
-    let itemID = item[0]
-    let itemValue = item[1]
+    let itemID = item[0];
+    let itemValue = item[1];
 
-    let newEl = document.createElement("li")
+    let newEl = document.createElement("li");
 
-    newEl.textContent = itemValue
+    newEl.textContent = itemValue;
 
-    shoppingListEl.append(newEl)
+    shoppingListEl.append(newEl);
 }
