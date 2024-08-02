@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getDatabase, ref, push, onValue } from
+import { getDatabase, ref, push, onValue, remove } from
  "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 
@@ -34,10 +34,11 @@ onValue(shoppingListInDB, function(snapshot) {
     clearShoppingListEL();
     
     for (let i = 0; i < itemsArray.length; i ++) {
+
         let currentItem = itemsArray[i];
-        let currentItemId = currentItem[0];
-        let currentItemValue = currentItem[1];
-       
+       let currentItemId = currentItem[0];
+       let currentItemValue = currentItem[1];
+
         appendItemToShoppingListEl(currentItem);
     }
 
@@ -58,6 +59,13 @@ function appendItemToShoppingListEl(item) {
     let newEl = document.createElement("li");
 
     newEl.textContent = itemValue;
+
+    newEl.addEventListener("click", function() {
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+
+        remove(exactLocationOfItemInDB)
+
+    })
 
     shoppingListEl.append(newEl);
 }
