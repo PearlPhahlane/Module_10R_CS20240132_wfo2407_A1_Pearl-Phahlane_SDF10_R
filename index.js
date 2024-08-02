@@ -22,8 +22,19 @@ addButtonEl.addEventListener("click", function() {
     
     push(shoppingListInDB, inputValue)
 
+    clearInputFieldEl()
 
-    inputFieldEl.value = ""
+    appendItemToShoppingListEl(inputValue)
 
-    shoppingListEl.innerHTML += `<li>${inputValue}</li>`;
+    
 })
+
+onValue(shoppingListInDB)
+
+function clearInputFieldEl() {
+    inputFieldEl.value = ""
+}
+
+function appendItemToShoppingListEl(itemValue) {
+    shoppingListEl.innerHTML += `<li>${itemValue}</li>`;
+}
