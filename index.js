@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"
-import { getDatabase, ref, push } from
+import { getDatabase, ref, push, onValue } from
  "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"
 
 
@@ -30,6 +30,8 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
+
+
 
 })
 
